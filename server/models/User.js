@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
     enum: ["recruiter", "jobseeker"],
     default: "jobseeker",
   },
+  photo: {
+    type: String,
+  },
+  provider: {
+    type: String,
+    enum: ["email", "google", "github"],
+    default: "email",
+  },
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);

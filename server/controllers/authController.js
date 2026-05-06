@@ -51,6 +51,48 @@ export const registerUser = async (req, res) => {
   }
 };
 
+// SOCIAL LOGIN (Google/GitHub via Firebase)
+export const socialLogin = async (req, res) => {
+  try {
+    const { name, email, photo, provider } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      user = await User.create({
+        name: name || email.split("@")[0],
+        email,
+        password: await bcrypt.hash(Math.random().toString(36), 10),
+        role: "jobseeker",
+        photo,
+        provider,
+      });
+    } else {
+      user.provider = provider;
+      if (photo && !user.photo) user.photo = photo;
+      await user.save();
+    }
+
+    res.json({
+      message: "Login successful",
+      token: generateToken(user._id),
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        photo: user.photo,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 // LOGIN USER
 export const loginUser = async (req, res) => {
   try {
