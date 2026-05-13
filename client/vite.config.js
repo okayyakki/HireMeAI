@@ -21,11 +21,5 @@ export default defineConfig({
     host: '0.0.0.0',
     port: process.env.PORT || 4173,
     allowedHosts: ['keen-respect-production-bbfc.up.railway.app'],
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-      },
-    },
   },
 })

@@ -13,7 +13,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || 'https://keen-respect-production-bbfc.up.railway.app',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);

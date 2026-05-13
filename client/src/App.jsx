@@ -663,6 +663,7 @@ const chatEndRef = useRef(null);
         setError(data.message || "Invalid login credentials");
       }
     } catch (err) {
+      console.error("Login network error:", err);
       setError("Network error. Please try again.");
     }
     setLoading(false);
@@ -689,6 +690,7 @@ const chatEndRef = useRef(null);
         setError(data.message || "Registration failed");
       }
     } catch (err) {
+      console.error("Register network error:", err);
       setError("Network error. Please try again.");
     }
     setLoading(false);

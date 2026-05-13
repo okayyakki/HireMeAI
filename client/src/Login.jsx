@@ -26,7 +26,7 @@ function Login({ setToken }) {
       }
 
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
       alert("Network error. Please try again.");
     }
   };
