@@ -1,0 +1,5 @@
+﻿Test Resume Content - John Doe
+Software Engineer with 5 years of experience
+Skills: JavaScript, React, Node.js
+Education: Bachelor of Science in Computer Science
+Experience: Developed web applications using MERN stack

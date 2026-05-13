@@ -6,7 +6,7 @@ function Login({ setToken }) {
 
   const handleLogin = async () => {
     try {
-      const res = await fetch("https://your-backend-url.onrender.com/api/jobs", {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -26,6 +26,7 @@ function Login({ setToken }) {
 
     } catch (error) {
       console.log(error);
+      alert("Network error. Please try again.");
     }
   };
 
